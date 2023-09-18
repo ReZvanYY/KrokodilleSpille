@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Krokkodille spillet.</title>
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+
+        input {
+            height: 50px;
+            width: 150px;
+            font-size: x-large;
+            text-align: center;
+            display: block;
+            margin: auto;
+        }
+
+        .text {
+            border: solid transparent;
+            height: 50px;
+            width: 150px;
+            font-size: larger;
+            display: block;
+            margin: auto;
+            text-align: center;
+            justify-items: center;
+        }
+
+        button {
+            border: outset transparent;
+            height: 50px;
+            width: 100;
+            background-color: transparent;
+            font-size: larger;
+            display: block;
+            margin: auto;
+        }
+
+        img {
+            height: 300px;
+            display: block;
+            margin: auto;
+        }
+
+        .spilleregler {
+            border: solid transparent;
+            height: 110px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: xx-large;
+            gap: 100px;
+
+        }
+
+        .poeng {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: x-large;
+
+        }
+
+        input {
+            width: 150px;
+            border: outset;
+            box-shadow: 0px 10px 10px 0 rgb(171, 172, 171);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="spilleregler">
+        <h2>Hvordan å spille!</h2>
+        <li> Alltid velg det største tallet.</li>
+        <li> Dersom tallet til venstre er størst skriv inn " > " </li>
+        <li> Dersom tallet til høyre er størst skriv inn " < "</li>
+        <li> Hvis begge tallene er like bruk "=" </li>
+    </div> <br> <br> <br>
+
+
+
+    
+    <div id="points" class="poeng">Poeng:</div>
+    <div id=" app">
+    </div>
+    
+    <div class="container">
+        <div id="option1"></div>
+        <div id="option2"></div>
+    </div>
+    
+    <input id="inputBar" type="text">
+    <button onclick="AnswerInput()">Svar!</button>
+
+
+    <br>
+    <img src="Krokkodille_transparent.png">
+
+
+    <script>
+        let answer1;
+        let answer2;
+
+        let points = 0;
+        let pointsResult = 0;
+
+        updateView();
+        function AnswerInput() {
+            let input = document.getElementById('inputBar');
+            
+            if (answer1 > answer2 && input.value == ">") {
+                pointsResult++;
+                updateView();
+            } else if (answer1 < answer2 && input.value == "<") {
+                pointsResult++;
+                updateView();
+            } else if (answer1 == answer2 && input.value == "=") {
+                pointsResult++;
+                updateView();
+            } else {
+            pointsResult--;
+            updateView();
+            }
+        }
+
+        function updateView() {
+            answer1 = Math.floor(Math.random() * 100 + 1);
+            answer2 = Math.floor(Math.random() * 100 + 1);
+            document.getElementById('option1').innerHTML = answer1;
+            document.getElementById('option2').innerHTML = answer2;
+            document.getElementById('points').innerHTML = pointsResult;
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>
